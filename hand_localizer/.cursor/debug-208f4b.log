@@ -1,0 +1,6 @@
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:start", "message": "serial_opened", "data": {"port": "/dev/rfcomm0", "baud": 115200, "is_open": true, "in_waiting": 0}, "timestamp": 1776585905510}
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:_read_loop", "message": "readline_timeout_empty", "data": {"timeout_count": 1, "in_waiting": 0}, "timestamp": 1776585906515}
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:_read_loop", "message": "readline_timeout_empty", "data": {"timeout_count": 5, "in_waiting": 0}, "timestamp": 1776585910532}
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:_read_loop", "message": "readline_timeout_empty", "data": {"timeout_count": 15, "in_waiting": 0}, "timestamp": 1776585920581}
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:_read_loop", "message": "readline_timeout_empty", "data": {"timeout_count": 30, "in_waiting": 0}, "timestamp": 1776585935656}
+{"sessionId": "208f4b", "hypothesisId": "H1", "location": "glove_reader.py:_read_loop", "message": "serial_exception_exit", "data": {}, "timestamp": 1776585952082}
