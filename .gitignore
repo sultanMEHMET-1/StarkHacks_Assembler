@@ -30,6 +30,8 @@ logs/
 .idea/
 *.swp
 *.swo
+.cursor/
+.learnings/
 
 # OS files
 .DS_Store
