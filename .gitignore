@@ -1,0 +1,43 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Local environment and logs
+.env
+.env.*
+*.log
+logs/
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# hand_localizer generated outputs
+hand_localizer/calibration_data.yaml
+hand_localizer/timing_log_*.csv
+hand_localizer/board.png
+hand_localizer/workspace_transform.npz
+hand_localizer/workspace_board_check.png
