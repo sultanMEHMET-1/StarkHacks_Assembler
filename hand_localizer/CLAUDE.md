@@ -1,1 +1,0 @@
-[Look at AGENTS.md and obey all of its rules](AGENTS.md)
