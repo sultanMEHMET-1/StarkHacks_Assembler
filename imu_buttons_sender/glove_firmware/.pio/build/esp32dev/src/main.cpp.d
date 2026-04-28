@@ -132,6 +132,4 @@
  /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
  /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
- /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
- /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
- /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h
+ /home/mercanmeh/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h

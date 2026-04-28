@@ -14,10 +14,7 @@ import serial
 class GloveState:
     """Immutable snapshot of the most recent glove reading."""
 
-    roll: float = 0.0
-    pitch: float = 0.0
-    yaw: float = 0.0
-    buttons: list[int] = field(default_factory=lambda: [0, 0, 0, 0, 0])
+    buttons: list[int] = field(default_factory=lambda: [0])
     timestamp_ms: int = 0
     received_at: float = 0.0
 
@@ -70,9 +67,6 @@ class GloveReader:
                     continue
                 try:
                     state = GloveState(
-                        roll=float(data.get("roll", 0.0)),
-                        pitch=float(data.get("pitch", 0.0)),
-                        yaw=float(data.get("yaw", 0.0)),
                         buttons=self._normalize_buttons(data.get("btn", [])),
                         timestamp_ms=int(data.get("t", 0)),
                         received_at=time.time(),
@@ -87,22 +81,14 @@ class GloveReader:
                 break
 
     def _normalize_buttons(self, raw_buttons: object) -> list[int]:
-        if not isinstance(raw_buttons, list):
-            return [0, 0, 0, 0, 0]
-        normalized = []
-        for value in raw_buttons[:5]:
-            try:
-                v = int(value)
-                if self.buttons_active_low:
-                    is_pressed = v == 0
-                else:
-                    is_pressed = v != 0
-                normalized.append(1 if is_pressed else 0)
-            except (TypeError, ValueError):
-                normalized.append(0)
-        if len(normalized) < 5:
-            normalized.extend([0] * (5 - len(normalized)))
-        return normalized
+        if not isinstance(raw_buttons, list) or len(raw_buttons) == 0:
+            return [0]
+        try:
+            v = int(raw_buttons[0])
+            is_pressed = (v == 0) if self.buttons_active_low else (v != 0)
+            return [1 if is_pressed else 0]
+        except (TypeError, ValueError):
+            return [0]
 
     def get_latest(self) -> GloveState | None:
         """Return the latest known state, or None before first reading."""

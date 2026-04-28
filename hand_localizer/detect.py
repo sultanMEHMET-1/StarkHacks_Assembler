@@ -85,20 +85,15 @@ def format_cube_output(cube_pose: CubePose) -> str:
 
 def _format_grip(buttons: list[int] | None) -> str:
     if not buttons:
-        return "-----"
-    return "".join("X" if int(value) else "-" for value in buttons[:5])
+        return "-"
+    return "X" if int(buttons[0]) else "-"
 
 
 def _gripper_request_from_buttons(buttons: list[int]) -> int:
-    """Closed if thumb (index 0) and any finger 1–4 pressed; else open."""
-    pressed = [int(v) != 0 for v in buttons[:5]]
-    while len(pressed) < 5:
-        pressed.append(False)
-    return (
-        GRIPPER_REQUEST_CLOSED
-        if pressed[0] and any(pressed[1:5])
-        else GRIPPER_REQUEST_OPEN
-    )
+    """Closed if the single button (index 0) is pressed; else open."""
+    if buttons and int(buttons[0]) != 0:
+        return GRIPPER_REQUEST_CLOSED
+    return GRIPPER_REQUEST_OPEN
 
 
 def format_robot_output(
@@ -410,12 +405,12 @@ def run_detection(
                     output_robot_pose = cube_robot_pose
                     if glove_state is not None:
                         if not first_glove_reading_seen:
-                            print("Glove data received. IMU active.")
+                            print("Glove data received.")
                             first_glove_reading_seen = True
                         palm_pos, palm_rot = compute_palm_pose(
                             cube_translation=cube_robot_pose[1],
                             cube_rotation_matrix=cube_robot_pose[0],
-                            wrist_pitch_degrees=glove_state.pitch,
+                            wrist_pitch_degrees=0.0,
                         )
                         output_robot_pose = (palm_rot, palm_pos)
                         stream_buttons = glove_state.buttons
